@@ -14,7 +14,7 @@
     {
       "id": "app-core",
       "title": "Application Core",
-      "description": "The heart of cmux lives in Sources/. cmuxApp.swift is the SwiftUI entry point, AppDelegate.swift manages lifecycle and keyboard routing, ContentView.swift orchestrates the workspace layout, TabManager.swift handles workspace persistence, and Workspace.swift defines the pane topology.",
+      "description": "The heart of cmux lives in the Sources directory. The cmux App is the SwiftUI entry point, the App Delegate manages lifecycle and keyboard routing, Content View orchestrates the workspace layout, Tab Manager handles workspace persistence, and Workspace defines the pane topology.",
       "focusDirectory": "Sources",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -101,7 +101,7 @@
     {
       "id": "socket-cli-api",
       "title": "Socket API & CLI",
-      "description": "cmux exposes a Unix socket API for scriptable automation — this is what makes it powerful for AI agents. TerminalController.swift runs the socket server, handling client connections on background threads. The CLI/ directory contains the command-line tool that communicates over this socket to control workspaces, splits, panes, and browser automation.",
+      "description": "cmux exposes a Unix socket API for scriptable automation, making it powerful for AI agents. The Terminal Controller runs the socket server, handling client connections on background threads. The CLI directory contains the command-line tool that communicates over this socket to control workspaces, splits, panes, and browser automation.",
       "focusDirectory": "Sources",
       "colorMode": "fileTypes",
       "highlightLayers": [
