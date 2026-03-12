@@ -14,7 +14,7 @@
     {
       "id": "app-core",
       "title": "Application Core",
-      "description": "The heart of cmux lives in Sources/. cmuxApp.swift is the SwiftUI entry point, AppDelegate.swift manages lifecycle and keyboard routing, ContentView.swift orchestrates the main workspace layout, TabManager.swift handles workspace ordering and persistence, and Workspace.swift defines the pane topology. These files coordinate the app's main event loop, focus management, and window state.",
+      "description": "The heart of cmux lives in Sources/. cmuxApp.swift is the SwiftUI entry point, AppDelegate.swift manages lifecycle and keyboard routing, ContentView.swift orchestrates the workspace layout, TabManager.swift handles workspace persistence, and Workspace.swift defines the pane topology.",
       "focusDirectory": "Sources",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -37,7 +37,7 @@
     {
       "id": "terminal-engine",
       "title": "Ghostty Terminal Engine",
-      "description": "Terminal rendering is powered by libghostty, a Zig-based GPU-accelerated engine vendored as a git submodule. GhosttyTerminalView.swift wraps the C FFI surface API (ghostty_surface_t) for clipboard, paste, and keyboard input. GhosttyConfig.swift loads user config from ~/.config/ghostty/config for themes, fonts, and colors. The ghostty/ submodule is a fork of mitchellh/ghostty with cmux-specific patches.",
+      "description": "Terminal rendering is powered by libghostty, a Zig-based GPU-accelerated engine vendored as a git submodule. GhosttyTerminalView.swift wraps the C FFI surface API for clipboard, paste, and keyboard input. GhosttyConfig.swift loads user config for themes, fonts, and colors.",
       "focusDirectory": "Sources",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -101,7 +101,7 @@
     {
       "id": "socket-cli-api",
       "title": "Socket API & CLI",
-      "description": "cmux exposes a Unix socket API for scriptable automation — this is what makes it powerful for AI agents. TerminalController.swift runs the socket server (at /tmp/cmux.sock), handling client connections on background threads. The CLI/ directory contains the cmux command-line tool that communicates over this socket. Commands control workspaces, splits, panes, browser automation, and more. The v2 API uses JSON with handle-based surface references.",
+      "description": "cmux exposes a Unix socket API for scriptable automation — this is what makes it powerful for AI agents. TerminalController.swift runs the socket server, handling client connections on background threads. The CLI/ directory contains the command-line tool that communicates over this socket to control workspaces, splits, panes, and browser automation.",
       "focusDirectory": "Sources",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -122,7 +122,7 @@
     {
       "id": "resources-and-scripts",
       "title": "Resources & Build Scripts",
-      "description": "Resources/ contains the app bundle assets: Info.plist (UTTypes, URL schemes), localization files (English + Japanese), shell integration scripts for bash/zsh, AppleScript definitions, and bundled CLI binaries. The scripts/ directory has the build tooling: setup.sh initializes submodules, reload.sh builds tagged debug apps for parallel development, and bump-version.sh manages semantic versioning for Sparkle auto-updates.",
+      "description": "Resources/ contains app bundle assets: Info.plist, localization files, shell integration scripts, and bundled CLI binaries. The scripts/ directory has build tooling: setup.sh initializes submodules, reload.sh builds tagged debug apps, and bump-version.sh manages versioning for auto-updates.",
       "focusDirectory": "",
       "colorMode": "fileTypes",
       "highlightLayers": [
