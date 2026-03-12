@@ -1,0 +1,159 @@
+{
+  "id": "cmux-onboarding",
+  "title": "cmux — AI-Native Terminal Emulator",
+  "description": "A guided tour of cmux's architecture: a macOS terminal emulator built for AI coding agents, combining Swift/AppKit UI with a Zig-based Ghostty rendering engine, split panes, in-app browser, and a scriptable socket API.",
+  "version": "1.0.0",
+  "steps": [
+    {
+      "id": "overview",
+      "title": "Welcome to cmux",
+      "description": "cmux is a native macOS terminal emulator purpose-built for AI coding agents like Claude Code and Codex. The codebase combines Swift/SwiftUI for the UI layer, a Zig-based terminal engine (Ghostty), and a custom split-pane library (Bonsplit). Key top-level areas: Sources/ for the app, ghostty/ for the terminal engine submodule, vendor/ for the split-pane library, CLI/ for the command-line tool, scripts/ for build tooling, and Resources/ for bundled assets.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes"
+    },
+    {
+      "id": "app-core",
+      "title": "Application Core",
+      "description": "The heart of cmux lives in Sources/. cmuxApp.swift is the SwiftUI entry point, AppDelegate.swift manages lifecycle and keyboard routing, ContentView.swift orchestrates the main workspace layout, TabManager.swift handles workspace ordering and persistence, and Workspace.swift defines the pane topology. These files coordinate the app's main event loop, focus management, and window state.",
+      "focusDirectory": "Sources",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "core-files",
+          "name": "Core App Files",
+          "color": "#3b82f6",
+          "items": [
+            { "path": "Sources/cmuxApp.swift", "type": "file" },
+            { "path": "Sources/AppDelegate.swift", "type": "file" },
+            { "path": "Sources/ContentView.swift", "type": "file" },
+            { "path": "Sources/TabManager.swift", "type": "file" },
+            { "path": "Sources/Workspace.swift", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "terminal-engine",
+      "title": "Ghostty Terminal Engine",
+      "description": "Terminal rendering is powered by libghostty, a Zig-based GPU-accelerated engine vendored as a git submodule. GhosttyTerminalView.swift wraps the C FFI surface API (ghostty_surface_t) for clipboard, paste, and keyboard input. GhosttyConfig.swift loads user config from ~/.config/ghostty/config for themes, fonts, and colors. The ghostty/ submodule is a fork of mitchellh/ghostty with cmux-specific patches.",
+      "focusDirectory": "Sources",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "ghostty-bridge",
+          "name": "Ghostty Bridge Layer",
+          "color": "#f59e0b",
+          "items": [
+            { "path": "Sources/GhosttyTerminalView.swift", "type": "file" },
+            { "path": "Sources/GhosttyConfig.swift", "type": "file" },
+            { "path": "Sources/TerminalWindowPortal.swift", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "panel-system",
+      "title": "Panel System",
+      "description": "cmux uses a Panel protocol to abstract over different content types: terminals, browsers, and markdown viewers. Each panel type has a model (TerminalPanel, BrowserPanel, MarkdownPanel) and a SwiftUI view. PanelContentView is the unified container. This architecture makes it easy to add new panel types — each just implements the Panel protocol for focus management and lifecycle.",
+      "focusDirectory": "Sources/Panels",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "panel-protocol",
+          "name": "Panel Protocol & Models",
+          "color": "#8b5cf6",
+          "items": [
+            { "path": "Sources/Panels/Panel.swift", "type": "file" },
+            { "path": "Sources/Panels/TerminalPanel.swift", "type": "file" },
+            { "path": "Sources/Panels/BrowserPanel.swift", "type": "file" },
+            { "path": "Sources/Panels/MarkdownPanel.swift", "type": "file" },
+            { "path": "Sources/Panels/PanelContentView.swift", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "panel-views",
+          "name": "Panel Views",
+          "color": "#06b6d4",
+          "items": [
+            { "path": "Sources/Panels/TerminalPanelView.swift", "type": "file" },
+            { "path": "Sources/Panels/BrowserPanelView.swift", "type": "file" },
+            { "path": "Sources/Panels/MarkdownPanelView.swift", "type": "file" },
+            { "path": "Sources/Panels/CmuxWebView.swift", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "split-pane-library",
+      "title": "Bonsplit — Split Pane Management",
+      "description": "Bonsplit is a custom split-pane library vendored as a submodule at vendor/bonsplit. It handles the tree-structured layout of vertical and horizontal splits, tab bar rendering, drag-and-drop reordering, and divider interactions. It bridges SwiftUI with AppKit for native-feeling pane resizing. The debug event log (DebugEventLog.swift) in Bonsplit tracks all split/tab/pane interactions for development.",
+      "focusDirectory": "vendor/bonsplit",
+      "colorMode": "fileTypes"
+    },
+    {
+      "id": "socket-cli-api",
+      "title": "Socket API & CLI",
+      "description": "cmux exposes a Unix socket API for scriptable automation — this is what makes it powerful for AI agents. TerminalController.swift runs the socket server (at /tmp/cmux.sock), handling client connections on background threads. The CLI/ directory contains the cmux command-line tool that communicates over this socket. Commands control workspaces, splits, panes, browser automation, and more. The v2 API uses JSON with handle-based surface references.",
+      "focusDirectory": "Sources",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "socket-layer",
+          "name": "Socket & CLI",
+          "color": "#ef4444",
+          "items": [
+            { "path": "Sources/TerminalController.swift", "type": "file" },
+            { "path": "Sources/SocketControlSettings.swift", "type": "file" },
+            { "path": "CLI", "type": "directory" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "resources-and-scripts",
+      "title": "Resources & Build Scripts",
+      "description": "Resources/ contains the app bundle assets: Info.plist (UTTypes, URL schemes), localization files (English + Japanese), shell integration scripts for bash/zsh, AppleScript definitions, and bundled CLI binaries. The scripts/ directory has the build tooling: setup.sh initializes submodules, reload.sh builds tagged debug apps for parallel development, and bump-version.sh manages semantic versioning for Sparkle auto-updates.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "resources",
+          "name": "Resources",
+          "color": "#10b981",
+          "items": [
+            { "path": "Resources", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "scripts",
+          "name": "Build Scripts",
+          "color": "#f97316",
+          "items": [
+            { "path": "scripts", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "full-picture",
+      "title": "The Full Architecture",
+      "description": "To recap: SwiftUI + AppKit UI (Sources/) sits on top of Bonsplit (vendor/bonsplit/) for split panes and Ghostty (ghostty/) for GPU-accelerated terminal rendering. The Panel protocol abstracts terminals, browsers, and markdown. A Unix socket API (TerminalController) enables AI agent automation via the CLI. Resources/ bundles shell integration and localization. Scripts/ handles tagged builds for isolated parallel development. Tests run via GitHub Actions, not locally.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes"
+    }
+  ]
+}
