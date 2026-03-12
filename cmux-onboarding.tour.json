@@ -1,13 +1,13 @@
 {
   "id": "cmux-onboarding",
   "title": "cmux — AI-Native Terminal Emulator",
-  "description": "A guided tour of cmux's architecture: a macOS terminal emulator built for AI coding agents, combining Swift/AppKit UI with a Zig-based Ghostty rendering engine, split panes, in-app browser, and a scriptable socket API.",
+  "description": "A guided tour of cmux's architecture: a mac OS terminal emulator built for AI coding agents, combining Swift/AppKit UI with a Zig-based Ghostty rendering engine, split panes, in-app browser, and a scriptable socket API.",
   "version": "1.0.0",
   "steps": [
     {
       "id": "overview",
       "title": "Welcome to cmux",
-      "description": "cmux is a native macOS terminal emulator purpose-built for AI coding agents like Claude Code and Codex. The codebase combines Swift/SwiftUI for the UI layer, a Zig-based terminal engine (Ghostty), and a custom split-pane library (Bonsplit). Key top-level areas: Sources/ for the app, ghostty/ for the terminal engine submodule, vendor/ for the split-pane library, CLI/ for the command-line tool, scripts/ for build tooling, and Resources/ for bundled assets.",
+      "description": "cmux is a native mac OS terminal emulator purpose-built for AI coding agents like Claude Code and Codex. The codebase combines Swift/SwiftUI for the UI layer, a Zig-based terminal engine (Ghostty), and a custom split-pane library (Bonsplit). Key top-level areas: Sources/ for the app, ghostty/ for the terminal engine submodule, vendor/ for the split-pane library, CLI/ for the command-line tool, scripts/ for build tooling, and Resources/ for bundled assets.",
       "focusDirectory": "",
       "colorMode": "fileTypes"
     },
